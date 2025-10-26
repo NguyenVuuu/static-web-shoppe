@@ -1,0 +1,611 @@
+<!-- 
+
+                Nguyên Vũ
+                22002885
+                                                                                                    
+            ****             ****
+         *********        *********
+       *************    *************
+     *********************************
+   *************************************
+  ***************************************
+ *****************************************
+ *****************************************
+  ***************************************
+   *************************************
+    ***********************************
+      *******************************
+        ***************************
+          ***********************
+             *****************
+                ***********
+                   *****
+                     *
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./fonts/fontawesome-free-6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        .product{
+            
+        }
+        .product-img{
+            max-width: 360px;
+            max-height: 470px;
+            border-radius: 4px;
+        }
+        .product-heading{
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 0;
+        }
+        .product-price{
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-color);
+            /* margin-bottom: 8; */
+        }
+        .product-note{
+            font-size: 18px;
+            color: #666;
+            margin: 0px 0 20px;
+            display: block;
+        }
+        .product__star--blue{
+            color: #2f5acf;
+            font-size: 15px;
+        }
+        .product-rating span{
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 12px;
+        }
+        .product-size,
+        .product-color{
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+        .product-size__text,
+        .product-color__text{
+            font-weight: 400;
+        }
+        .product-size__text-strong,
+        .product-color__text-strong{
+            font-weight: 700;
+        }
+        .product-color__btn-black{
+            height: 34px;
+            max-width: 51px;
+            display: block;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+        .product-detail__heading{
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .product-detail__item{
+            font-size: 1.4rem;
+        }
+
+        /* CONTENT */
+        .content{
+            color: var(--text-color);
+        }
+        .content-detail__heading{
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        .content-detail__text{
+            font-size: 1.6rem;
+        }
+        .content-protect__heading,
+        .content-why__heading{
+            font-size: 3rem;
+            font-weight: 400;
+        }
+        .content-protect__list,
+        .content-why__list{
+            padding-left: 50px;
+        }
+        .content-protect__item,
+        .content-why__item{
+            font-size: 1.6rem;
+        }
+        .content-hot__text{
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- THẺ FULL CHỨA TẤT CẢ -->
+    <div class="full">
+
+        <!-- BẮT ĐẦU PHẦN HEADER -->
+        <header class="header">
+            <div class="grid">
+
+                <!-- HEADER MENU -->
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Kênh Người Bán</a>
+                        </li>
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Trở thành Người bán</a>
+                        </li>
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Tải ứng dụng</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            Kết nối
+                            <a href="https://www.facebook.com/nguyenvuuu0211" class="header__navbar-icon">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/nguyenvu_11/" class="header__navbar-icon">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+    
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--noti">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-solid fa-bell"></i>
+                                Thông Báo
+                            </a>
+
+                            <!-- HOVER THÔNG BÁO -->
+                            <div class="header__noti">
+                                <!-- <header class="header__noti-header">
+                                    <h3>Thông báo mới</h3>
+                                </header>
+                                <ul class="header__noti-list">
+                                    <li class="header__noti-item">
+                                        <a href="#" class="header__noti-link">
+                                            <img src="./img/sp1.jpg" alt="" class="header__noti-img">
+                                            <div class="header__noti-info">
+                                                <span class="header__noti-name">
+                                                    Mango
+                                                </span>
+                                                <span class="header__noti-descr">
+                                                    
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul> -->
+                                <img src="./img/login.png" alt="" class="header__noti-img" style="padding-top: 150px; padding-bottom: 0;">
+                                <!-- <div> sadasd</div> -->
+                                <span class="header__noti-descr">
+                                             Đăng nhập để xem Thông báo       
+                                </span>
+                                <div class="header__noti-login">
+                                    <ul class="header__noti-list">
+                                        <!-- <li class="header__noti-item">
+                                            <a href="./login.html" class="header__noti-link">
+                                                Đăng Ký
+                                            </a>
+                                        </li> -->
+                                        <li class="header__noti-item">
+                                            <a href="./login.html" class="header__noti-link">
+                                                Đăng Nhập
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-regular fa-circle-question"></i>
+                                Hỗ Trợ
+                            </a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-solid fa-earth-asia"></i>
+                                Tiếng Việt
+                                <i class="fa-solid fa-angle-down"></i>
+                            </a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="./login.html" class="header__navbar-item-link header__navbar-item--border header__navbar-item--weight">Đăng Ký</a>            
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="./login.html" class="header__navbar-item-link header__navbar-item--weight">Đăng Nhập</a>            
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- HEADER SEARCH -->
+                <div class="header-with-search">
+                    <div class="header__logo">
+                        <a href="./index.html">
+                            <img src="./img/test.png" alt="" class="header__logo-img" style="width: 150px;">
+                        </a>
+                    </div>
+
+                    <!-- THANH TÌM KIẾM -->
+                    <div class="header__search">
+
+                        <!-- LỊCH SỬ TÌM KIẾM -->
+                        <div class="header__search-input-wrap">
+                            <input type="text" class="header__search-input" placeholder="Tìm kiếm ngay" >
+                            <div class="header__search-history">
+                                <h3 class="header__search-history-heading">
+                                    Lịch sử tìm kiếm
+                                </h3>
+                                <ul class="header__search-history-list">
+                                    <li class="header__search-history-item">
+                                        <a href="#">Set</a>
+                                    </li>
+                                    <li class="header__search-history-item">
+                                        <a href="#">Combo</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- TRONG SHOP/NGOÀI SHOP -->
+                        <div class="header__search-select">
+                            <span class="header__search-select-label">Trong Shop</span>
+                            <i class="header__search-select-icon fa-solid fa-chevron-down"></i>
+                            <ul class="header__search-option">
+                                <li class="header__search-item header__search-item--active">
+                                    <span>Trong Shop</span>
+                                    <i class="fa-solid fa-check"></i>
+                                </li>
+                                <li class="header__search-item">
+                                    <span>Ngoài Shop</span>
+                                    <i class="fa-solid fa-check"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- ICON KÍNH LÚP -->
+                        <button class="header__search-btn">
+                            <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                    <!-- ICON GIỎ HÀNG -->
+                    <div class="header__cart">
+                        <div class="header__cart-wrap">
+
+                            <i class="header__cart-icon fa-solid fa-cart-shopping"></i>
+                            <!-- KHÔNG CÓ SẢN PHẨM:  header__cart-list--no-cart -->
+                            <div class="header__cart-list">
+                                <img src="./img/no-cart.png" alt="ERROR" class="header__cart--no-cart" data-ll-status="loaded">
+                                <span class="header__cart-list--no-cart-msg  ">
+                                    Chưa có sản phẩm      
+                                </span>
+                                <a href="./login.html" class="header__cart-list--no-cart-add ">
+                                    Thêm sản phẩm
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- KẾT THÚC HEADER -->
+
+        <!-- BẮT ĐẦU PHẦN CONTENT -->
+        <div class="container-fluid">
+            <div class="grid">
+                <div class="row mt-5">
+                    <div class="product col  ">
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-9">
+
+                                <img src="./img/Tanktop_Powerfit_Den_1.jpg" class="product-img" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <h1 class="product-heading">
+                                    Áo Tanktop Nam Gym Powerfit
+                                </h1>
+                                <span class="product-note">
+                                    Co giãn
+                                </span>
+                                <div class="product-rating">
+                                    <i class="product__star--blue fa-solid fa-star"></i>
+                                    <i class="product__star--blue fa-solid fa-star"></i>
+                                    <i class="product__star--blue fa-solid fa-star"></i>
+                                    <i class="product__star--blue fa-solid fa-star"></i>
+                                    <i class="product__star--blue fa-solid fa-star"></i>
+                                    <span class="mx-4 ">(58)</span>
+                                    <span class="">|</span>
+                                    <span class="mx-4">Đã bán(web):917</span>
+                                </div>
+                                <p class="product-price mt-4">239.000đ</p>
+                                <div class="product-color mb-4">
+                                    <span class="product-color__text">Màu sắc:
+                                        <span class="product-color__text-strong">Đen</span>
+                                    </span>
+                                    <div class="product-color__btn">
+                                        <!-- <span class="product-color__btn-black border-5  border-danger" style="background-image: url(https://media.coolmate.me/cdn-cgi/image/width=160,height=160,quality=80,format=auto/uploads/June2023/mauDrop_Arm_Gym_Powerfit_3.jpg);"></span> -->
+                                        <button class="btn-dark px-5 pb-5  rounded-pill"></button>
+                                        <button class="btn-secondary  px-5 pb-5  rounded-pill"></button>
+                                    </div>
+                                </div>
+                                <div class="product-size pb-5 mb-5 border-bottom ">
+                                    <span class="product-size__text">Kích thước Áo:
+                                        <span class="product-size__text-strong">S</span>
+                                        (1m55 - 1m59 | 48kg - 54kg)
+                                    </span><div class="product-color__btn">
+                                        <button class="btn-success   px-5 py-3  rounded-pill "> S </button>
+                                        <button class="btn-secondary  btn-dis px-5 py-3  rounded-pill" disabled > M </button>
+                                        <button class="btn-secondary  btn-dis px-5 py-3  rounded-pill" disabled > L </button>
+                                        <button class="btn-secondary  btn-dis px-5 py-3  rounded-pill" disabled > XL </button>
+                                        <button class="btn-secondary  btn-dis px-5 py-3  rounded-pill" disabled > 2XL </button>
+                                        <button class="btn-secondary  btn-dis  px-5 py-3 rounded-pill" disabled > 3XL </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <h3 class="product-detail__heading">
+                                    Đặc điểm nổi bật            
+                                </h3>
+                                <ul class="product-detail__list">
+                                    <li class="product-detail__item">Chất liệu: 86% Poly + 14% Spandex</li>
+                                    <li class="product-detail__item">Co giãn 4 chiều mang lại sự thoải mái để bạn vận động hết mình</li>
+                                    <li class="product-detail__item">Chất liệu thấm mồ hôi và khô nhanh, thoáng khí mang lại khả năng khô thoáng vượt trội</li>
+                                    <li class="product-detail__item">Kiểu dáng áo: Form Slim fit</li>
+                                    <li class="product-detail__item">Người mẫu: 180cm - 80kg, mặc áo size XL</li>
+                                    <li class="product-detail__item">Tự hào sản xuất tại Việt Nam</li>
+                                    <li class="product-detail__item">**Hạn chế giặt máy ở các chế độ mạnh. Khi giặt bạn nên lộn ngược áo.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content row mx-5">
+                    <div class="content-detail col">
+                        <h1 class="content-detail__heading my-5">Chi tiết sản phẩm</h1>
+                        <p class="content-detail__text my-4">
+                            Áo Tanktop Nam Gym Powerfit ba lỗ <a href="./index.html">Mango</a> sử dụng chất liệu Poly và Spandex mang lại sản phẩm áo thoáng khí, thấm mồ hôi nhanh và khô thoáng vượt trội. Đây thực sự là sản phẩm thời trang không thể thiếu trong tủ đồ của các chàng trai yêu thích vận động. 
+                        </p>
+                    </div>
+                    <div class="content-why">
+                        <h1 class="content-why__heading">
+                            Tại sao nên lựa chọn Áo Tanktop Nam Gym Powerfit tại Mango?
+                        </h1>
+                        <ul class="content-why__list">
+                            <li class="content-why__item">Áo ba lỗ Tanktop nam co giãn 4 chiều, thấm hút vượt trội trong thời gian ngắn, tạo cảm giác khô thoáng và thoải mái khi mặc. Sản phẩm thiết kế hiện đại, phối đồ dễ dàng, thích hợp cho mọi chàng trai sử dụng khi tập luyện hay mặc hàng ngày</li>
+                            <li class="content-why__item">Chương trình miễn phí vận chuyển cho đơn hàng từ 200K</li>
+                            <li class="content-why__item">Đổi trả hàng hoàn toàn miễn phí trong vòng 60 ngày</li>
+                            <li class="content-why__item">Dịch vụ tư vấn, chăm sóc khách hàng chuyên nghiệp, tận tâm</li>
+                            <li class="content-why__item">Trở thành thành viên MangoClub với nhiều ưu đãi hấp dẫn!</li>
+                        </ul>
+                    </div>
+                    <div class="content-hot">
+                        <h1 class="content-why__heading">
+                            Đặc điểm nổi bật của Áo Tanktop Nam Gym Powerfit
+                        </h1>
+                        <img src="./img/product-hot.jpg" alt="" style="width: 100%;">
+                        <img class="my-5" src="./img/product-hot2.jpg" alt="" style="width: 100%;">
+                        <p class="content-hot__text my-4">Thành phần vải áo ba lỗ Tank top nam sử dụng 86% Poly + 14% Spandex có độ mỏng nhẹ, co giãn tốt, mang trải nghiệm thoáng mát nhất cho người mặc. </p>
+                        <p class="content-hot__text my-4">Chất liệu Poly và Spandex kết hợp cùng công nghệ thấm hút Wicking và nhanh khô Quick-Dry hỗ trợ xử lí áo nam luôn khô thoáng và giữ dáng trong mọi hoạt động luyện tập.                        </p>
+                        <img class="" src="./img/product-hot3.jpg" alt="" style="width: 100%;">
+                        <img class="" src="./img/product-hot4.jpg" alt="" style="width: 100%;">
+                        <p class="content-hot__text my-4">Với khả năng co giãn 4 chiều, Áo Tanktop Nam Gym Powerfit mang đến cho người dùng sự vừa vặn với dáng người, cho phép bạn vận động hết mình để đạt hiệu quả cao. </p>
+                        <p class="content-hot__text">Thiết kế áo ba lỗ Tanktop nam dáng Slim Fit với phần nách không xẻ sâu, làm áo có thể ôm và khoe cơ ngực tinh tế. Phần tà áo may dáng bầu làm giảm mức độ cản trở trong khi bạn luyện tập.</p>
+                        <img class="" src="./img/product-hot5.jpg" alt="" style="width: 100%;">
+                        <p class="content-hot__text my-4">Sản phẩm có in logo và Graphic trên áo và sử dụng công nghệ in Silicon dẻo nổi bật và khá chắc chắn, giúp các chi tiết không bị phai hay hỏng theo thời gian. </p>
+                        <p class="content-hot__text">Tông màu xám nhạt, xanh Navy, đen và xám đậm là các màu trung tính, khiến bạn dễ dàng phối đồ với mọi trang phục, thể hiện được nét nam tính của riêng mình. </p>
+                        <img class="" src="./img/product-hot6.jpg" alt="" style="width: 100%;">
+                    </div>
+                    <div class="content-protect mb-5">
+                        <h1 class="content-protect__heading">
+                            Cách giặt và bảo quản Áo Tanktop Nam Gym Powerfit đơn giản nhất
+                        </h1>
+                        <ul class="content-protect__list">
+                            <li class="content-protect__item">Thay vì giặt máy thì giặt tay sẽ giúp đảm bảo được độ bền của áo. </li>
+                            <li class="content-protect__item">Hạn chế đổ trực tiếp bột giặt/xà phòng lên bề mặt áo nhằm tránh ảnh hưởng đến chất liệu. </li>
+                            <li class="content-protect__item">Nên giặt áo ba lỗ nam với nước lạnh hoặc nước ấm.</li>
+                            <li class="content-protect__item">Không nên phơi áo trực tiếp dưới ánh nắng mặt trời.</li>
+                            <li class="content-protect__item">Sau khi phơi khô nên gấp gọn gàng trong tủ, không nên treo bằng móc tránh dão phần cổ áo. </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- KẾT THÚC CONTENT -->
+        
+        <!-- BẮT ĐẦU PHẦN FOOTER -->
+        <footer class="footer">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Chăm sóc khách hàng
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trung tâm trợ giúp
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Mango Shop Mall
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng Dẫn Mua Hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng Dẫn Bán Hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Mango Xu
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Vận Chuyển
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trả Hàng & Hoàn Tiền
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chăm Sóc Khách Hàng
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Về Mango
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="./gioithieu.html" class="footer-item__link">
+                                    Giới Thiệu Về Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./cauchuyen.html" class="footer-item__link">
+                                    Câu chuyện của Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Tuyển Dụng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Điều Khoản Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính Sách Bảo Mật
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính Hãng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Kênh Người Bán
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Flash Sales
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Liên Hệ Với Truyền Thông
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Danh mục
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="./ao.html" class="footer-item__link">
+                                    Áo
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./aokhoac.html" class="footer-item__link">
+                                    Áo Khoác
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./quan.html" class="footer-item__link">
+                                    Quần
+                                </a>
+                            </li>                   
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Theo dõi chúng tôi
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="https://www.facebook.com/nguyenvuuu0211" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-facebook"></i>
+                                    Fakebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="https://www.instagram.com/nguyenvu_11/" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="https://github.com/NguyenVuuu" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-github"></i>
+                                    Github
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Vào cửa hàng trên ứng dụng
+                        </h3>
+                        <div class="footer__download">
+                            <img src="./img/qr.png" alt="" class="footer__download-qr">
+                            <div class="footer__download-app">
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/app-store.png" alt="" class="footer__download-app-img">
+                                </a>
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/gg-play.png" alt="" class="footer__download-app-img">
+                                </a>
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/galery.png" alt="" class="footer__download-app-img">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer> 
+        <!-- KẾT THÚC FOOTER -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,700 @@
+<!-- 
+
+                Nguyên Vũ
+                22002885
+                                                                                                    
+            ****             ****
+         *********        *********
+       *************    *************
+     *********************************
+   *************************************
+  ***************************************
+ *****************************************
+ *****************************************
+  ***************************************
+   *************************************
+    ***********************************
+      *******************************
+        ***************************
+          ***********************
+             *****************
+                ***********
+                   *****
+                     *
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./fonts/fontawesome-free-6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        .header__cart-list {
+        position: absolute;
+        min-width: 32rem;
+        min-height: 2rem;
+        top: 168%;
+        right: 40%;
+        background-color: var(--white-color);
+        border-radius: 4px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transform-origin: calc(100% - 10px) top;
+        --growth-from: 0;
+        --growth-to: 1;
+        animation: growth ease-in 0.25s;
+        display: none;
+        cursor: default;
+        z-index: 1;
+    }
+    .shopping__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cart-item {
+        margin-bottom: 2rem;
+    }
+
+    .shoping__cart-img {
+        margin-top: 1.6rem;
+        height: 10rem;
+        object-fit: contain;
+        display: none;
+    }
+    .shoping__text {
+        font-size: 1.4rem;
+        padding-left: 2rem;
+        color: var(--text-color);
+        display: none;
+    }
+    .header__cart-purchased-heading {
+        font-size: 1.4rem;
+        color: #757575;
+        font-weight: 400;
+        margin-bottom: 1.2rem;
+        margin-left: 12px;
+    }
+    .header__cart-purchased-list {
+        padding-left: 0;
+        display: block;
+    }
+    .header__cart-purchased-item {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        padding-bottom: 0.8rem;
+    }
+    .header__cart-purchased-img {
+        height: 4rem;
+        object-fit: contain;
+        margin-left: 12px;
+        border: 1px solid #e8e8e8;
+    }
+    .header__cart-purchased-info {
+        width: 100%;
+    }
+    .header__cart-purchased-head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .header__cart-item-name {
+        font-size: 1.2rem;
+        margin-left: 1.2rem;
+        margin-bottom: 1.2rem;
+        line-height: 2rem;
+        max-height: 4rem;
+        overflow: hidden;
+        flex: 1;
+    }
+    .header__cart-item-wrap {
+        margin-right: 12px;
+    }
+    .header__cart-item-price {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+    }
+    .header__cart-item-multiply {
+        font-size: 1rem;
+        color: #757575;
+        margin: 0 0.4rem;
+    }
+    .header__cart-item-amount {
+        font-size: 1.2rem;
+        color: #757575;
+    }
+    .header__cart-purchased-body {
+        display: flex;
+        justify-content: space-between;
+    }
+    .header__cart-purchased-description {
+        margin-left: 1.2rem;
+        font-size: 1.2rem;
+    }
+    .header__cart-purchased-remove {
+        font-size: 1.3rem;
+        margin-right: 1.2rem;
+        margin-left: 12px;
+        color: var(--text-color);
+    }
+    .header__cart-notice {
+        position: absolute;
+        padding: 0.1rem 0.6rem;
+        bottom: 14px;
+        right: -5px;
+        background-color: var(--white-color);
+        border-radius: 1rem;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        border: 0.2rem solid #ee4d2d;
+    }
+        .admin{
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .who__heading{
+            color: var(--black-color);
+            font-weight: 700;
+            font-size: 50px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .who__heading-item,
+        .who__heading-item-link{
+            color: var(--text-color);
+        }
+        .vanhoa{
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .vanhoa__heading{
+            color: var(--white-color);
+            font-weight: 700;
+            font-size: 50px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- THẺ FULL CHỨA TẤT CẢ -->
+    <div class="full">
+
+        <!-- BẮT ĐẦU PHẦN HEADER -->
+        <header class="header">
+            <div class="grid">
+
+                <!-- HEADER MENU -->
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Kênh Người Bán</a>
+                        </li>
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Trở thành Người bán</a>
+                        </li>
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Tải ứng dụng</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            Kết nối
+                            <a href="https://www.facebook.com/nguyenvuuu0211" class="header__navbar-icon">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/nguyenvu_11/" class="header__navbar-icon">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+    
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--noti">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-solid fa-bell"></i>
+                                Thông Báo
+                            </a>
+
+                            <!-- HOVER THÔNG BÁO -->
+                            <div class="header__noti">
+                                <header class="header__notify-header">
+                                    <h3>Thông báo mới nhận</h3>
+                                </header>
+                                <ul class="header__notify-list">
+                                    <li class="header__notify-item">
+                                        <a href="#" class="header__notify-link">
+                                            <img src="./img/Tanktop_Powerfit_Den_1.jpg" alt="" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">Áo Tanktop Nam Gym Powerfit</span>
+                                                <span class="header__notify-desc">Sử dụng chất liệu Poly và Spandex mang lại sản phẩm áo thoáng khí, thấm mồ hôi nhanh và khô thoáng vượt trội.</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__notify-item header__notify-item--view">
+                                        <a href="#" class="header__notify-link">
+                                            <img src="./img/ao-peace.jpg" alt="" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">Áo Thun Nam Peace</span>
+                                                <span class="header__notify-desc">Đây là những chiếc áo thun in hình trong dự án Clean Vietnam của Mango làm từ chất liệu Cotton kết hợp cùng chất liệu Polyester được tái chế từ các vỏ chai nhựa. </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__notify-item header__notify-item--view">
+                                        <a href="#" class="header__notify-link">
+                                            <img src="./img/crewz.jpg" alt="" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">Tee basic ss1 CREWZ áo thun tay lỡ unisex Local Brand - AO_THUN_DVR (V427)</span>
+                                                <span class="header__notify-desc">Áo thun nam oversize sử dụng chất vải cotton co giãn 4 chiều. Có đặc điểm mềm mịn, độ co giãn cao, khả năng thấm hút tốt và được dệt hoàn toàn từ sợi cây bông tự nhiên</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="header__notify-footer">
+                                    <a href="#" class="header__notify-footer-btn">Xem tất cả</a>
+                                </div>
+                            </div>
+                            
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-regular fa-circle-question"></i>
+                                Hỗ Trợ
+                            </a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-solid fa-earth-asia"></i>
+                                Tiếng Việt
+                                <i class="fa-solid fa-angle-down"></i>
+                            </a>
+                        </li>
+                        <!-- <li class="header__navbar-item">
+                            <a href="./login.html" class="header__navbar-item-link header__navbar-item--border header__navbar-item--weight">Đăng Ký</a>            
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="./login.html" class="header__navbar-item-link header__navbar-item--weight">Đăng Nhập</a>            
+                        </li> -->
+                        <li class="header__navbar-item header__navbar-user">
+                            <img src="./img/cat.jpg" alt="" class="header__navbar-user-img">
+                            <span class="header__navbar-user-name">Nguyên Vũ - Admin</span>
+
+                            <ul class="header__navbar-user-menu">
+                                <li class="header__navbar-user-item">
+                                    <a href="#">Tài khoản</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="#">Đơn mua</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="./sitemap.html">Sitemap</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="./doanhthu.html">Doanh Thu</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="./index.html">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- HEADER SEARCH -->
+                <div class="header-with-search">
+                    <div class="header__logo">
+                        <a href="#">
+                            <img src="./img/test.png" alt="" class="header__logo-img" style="width: 150px;">
+                        </a>
+                    </div>
+
+                    <!-- THANH TÌM KIẾM -->
+                    <div class="header__search">
+
+                        <!-- LỊCH SỬ TÌM KIẾM -->
+                        <div class="header__search-input-wrap">
+                            <input type="text" class="header__search-input" placeholder="Tìm kiếm ngay" >
+                            <div class="header__search-history">
+                                <h3 class="header__search-history-heading">
+                                    Lịch sử tìm kiếm
+                                </h3>
+                                <ul class="header__search-history-list">
+                                    <li class="header__search-history-item">
+                                        <a href="./tanktop.html">Tanktop</a>
+                                    </li>
+                                    <li class="header__search-history-item">
+                                        <a href="./hot.html">Hot</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- TRONG SHOP/NGOÀI SHOP -->
+                        <div class="header__search-select">
+                            <span class="header__search-select-label">Trong Shop</span>
+                            <i class="header__search-select-icon fa-solid fa-chevron-down"></i>
+                            <ul class="header__search-option">
+                                <li class="header__search-item header__search-item--active">
+                                    <span>Trong Shop</span>
+                                    <i class="fa-solid fa-check"></i>
+                                </li>
+                                <li class="header__search-item">
+                                    <span>Ngoài Shop</span>
+                                    <i class="fa-solid fa-check"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- ICON KÍNH LÚP -->
+                        <button class="header__search-btn">
+                            <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                    <!-- ICON GIỎ HÀNG -->
+                    <div class="header__cart">
+                        <div class="header__cart-wrap">
+
+                            <i class="header__cart-icon fa-solid fa-cart-shopping"></i>
+                            <!-- KHÔNG CÓ SẢN PHẨM:  header__cart-list--no-cart -->
+                            <!-- <div class="header__cart-list">
+                                <img src="./img/no-cart.png" alt="ERROR" class="header__cart--no-cart" data-ll-status="loaded">
+                                <span class="header__cart-list--no-cart-msg  ">
+                                    Chưa có sản phẩm      
+                                </span>
+                                <a href="./login.html" class="header__cart-list--no-cart-add ">
+                                    Thêm sản phẩm
+                                </a>
+                            </div> -->
+
+                            <!-- CÓ SẢN PHẨM -->
+                            <span class="header__cart-notice">3</span>
+                            <div class="header__cart-list">
+                                <div class="shopping__container">
+                                  <img class="shoping__cart-img cart-item" src="/shopee/assets/img/shopping-cart.png" alt="" />
+                                  <span class="shoping__text cart-item">Chưa có sản phẩm</span>
+                                </div>
+                                <!-- shoppingg cart purchased -->
+                                <div class="shopping__cart-purchased">
+                                  <h3 class="header__cart-purchased-heading">
+                                    Sản phẩm đã thêm
+                                  </h3>
+                                  <ul class="header__cart-purchased-list">
+                                    <li class="header__cart-purchased-item">
+                                      <img class="header__cart-purchased-img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="" />
+                                      <div class="header__cart-purchased-info">
+                                        <div class="header__cart-purchased-head">
+                                          <h5 class="header__cart-item-name">
+                                            Áo Tanktop Nam Gym Powerfit
+                                          </h5>
+                                          <div class="header__cart-item-wrap">
+                                            <span class="header__cart-item-price">239.000đ</span>
+                                            <span class="header__cart-item-multiply">x</span>
+                                            <span class="header__cart-item-amount">1</span>
+                                          </div>
+                                        </div>
+                                        <div class="header__cart-purchased-body">
+                                          <span class="header__cart-purchased-description">Mặt size 40mm kháng nước 30m</span>
+                                          <span class="header__cart-purchased-remove">Xóa</span>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="header__cart-purchased-item">
+                                      <img class="header__cart-purchased-img" src="./img/hoodie-typography.jpg" alt="" />
+                                      <div class="header__cart-purchased-info">
+                                        <div class="header__cart-purchased-head">
+                                          <h5 class="header__cart-item-name">
+                                            Áo Hoodie Oversize 84RISING TYPOGRAPHY
+                                          </h5>
+                                          <div class="header__cart-item-wrap">
+                                            <span class="header__cart-item-price">439.000đ</span>
+                                            <span class="header__cart-item-multiply">x</span>
+                                            <span class="header__cart-item-amount">1</span>
+                                          </div>
+                                        </div>
+                                        <div class="header__cart-purchased-body">
+                                          <span class="header__cart-purchased-description">Túi hộp phối nút cài, phong cách dễ thương siêu
+                                            cá
+                                            tính</span>
+                                          <span class="header__cart-purchased-remove">Xóa</span>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="header__cart-purchased-item">
+                                      <img class="header__cart-purchased-img" src="./img/kaki-excool.jpg" alt="" />
+                                      <div class="header__cart-purchased-info">
+                                        <div class="header__cart-purchased-head">
+                                          <h5 class="header__cart-item-name">Quần Dài Nam Kaki Excool Trượt Nước</h5>
+                                          <div class="header__cart-item-wrap">
+                                            <span class="header__cart-item-price">449.000đ</span>
+                                            <span class="header__cart-item-multiply">x</span>
+                                            <span class="header__cart-item-amount">2</span>
+                                          </div>
+                                        </div>
+                                        <div class="header__cart-purchased-body">
+                                          <span class="header__cart-purchased-description">
+                                            68 Phím Loại C Dành Cho Laptop</span>
+                                          <span class="header__cart-purchased-remove">Xóa</span>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                  <a href="" class="btn btn--primary btn-float-right">Xem giỏ hàng</a>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- KẾT THÚC HEADER -->
+
+        <!-- BẮT ĐẦU PHẦN CONTENT -->
+        <div class="container bg-white mt-5 ">
+            <div class="row">
+                <div class="col text-center ">
+                    <img src="./img/logo.png" alt="" style="width: 30%;">
+                    <h1 class="my-5">
+                        <a href="#" class="text-decoration-none fs-1 text-danger">Tất cả những điều bạn muốn biết về Mango ❤❤❤!!!</a>
+                    </h1>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col">
+                    <h1 class="who__heading">Mango là ai?</h1>
+                    <img src="./img/who.jpg" alt="" style="width: 100%;">
+                </div>
+                <div class="col">
+                    <ul class="who__heading-list fs-4">
+                        <li class="who__heading-item">
+                            <p>
+                                <a href="" class="text-decoration-none who__heading-item-link">Được thành lập bởi <span class="admin">Phan Nguyên Vũ</span></a>
+                            </p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một Website bán đồ thời trang Online cho nam giới nhưng toàn bị chê chưa có tính thời trang trong thiết kế?</p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một Startup ứng dụng công nghệ để thay đổi ngành thời trang truyền thống theo hướng D2C Online, mang lại sự tiện lợi và tiết kiệm hơn cho các đấng mày râu?</p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một Thương Hiệu đồ thời trang cho nam giới hướng tới các sản phẩm tối giản, tập trung vào chất liệu và sự bền vững: Substainable Fashion?</p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một công ty đã vượt qua giai đoạn đại dịch Covid, và đạt tốc độ tăng trưởng 3.5 lần so với năm 2020?</p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một doanh nghiệp bán hàng Online đầu tiên tại Việt Nam có chính sách kỳ quặc: cho phép khách hàng đổi trả sản phẩm tới 60 ngày kể cả đã qua sử dụng?</p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một "Zappos" của Việt Nam khi đứng ra cam kết hài lòng 100% cho khách hàng mua sắm Online bằng 11 điều cụ thể?</p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một Startup nguồn lực hạn chế đã có chương trình Care&Share đóng góp cho hoạt động từ thiện ý nghĩa?</p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một Startup mới 3 năm tuổi còn gặp nhiều khó khăn mà đi xây dựng Văn Hóa Doanh Nghiệp?</p>
+                        </li>
+                        <li class="who__heading-item">
+                            <p>Một Startup lên SharkTank gọi được 500k USD trong thời gian nhanh nhất, nhưng cũng có màn ‘kỳ kèo’ gay cấn nhất?</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-5 bg-black vanhoa">
+                <div class="col">
+                    <h1 class="vanhoa__heading">VĂN HOÁ COOLMATE</h1>
+                    <p class="text-white fs-4 mt-5" style="font-weight: 500;">Ở Coolmate, văn hóa không chỉ là một bộ tài liệu, mà đó là "cẩm nang" và "quy tắc ứng xử" cho tất cả nhân viên của Coolmate bất kể ai, và bất kể vị trí gì. Coolmate coi việc xây dựng Văn Hóa là một phần quan trọng trong việc xây dựng doanh nghiệp phát triển mạnh và bền vững. 10 điều về Văn Hóa Coolmate được coi là "bộ luật Coolmate" định hướng cho mọi hành vi và tính cách của con người Coolmate.</p>
+                </div>
+                <div class="col">
+                    <img src="./img/vanhoa.jpg" alt="" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+        <!-- KẾT THÚC CONTENT -->
+        
+        <!-- BẮT ĐẦU PHẦN FOOTER -->
+        <footer class="footer mt-5">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Chăm sóc khách hàng
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trung tâm trợ giúp
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Mango Shop Mall
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng Dẫn Mua Hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng Dẫn Bán Hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Mango Xu
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Vận Chuyển
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trả Hàng & Hoàn Tiền
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chăm Sóc Khách Hàng
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Về Mango
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="./gioithieu.html" class="footer-item__link">
+                                    Giới Thiệu Về Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./cauchuyen.html" class="footer-item__link">
+                                    Câu chuyện của Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Tuyển Dụng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Điều Khoản Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính Sách Bảo Mật
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính Hãng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Kênh Người Bán
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Flash Sales
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Liên Hệ Với Truyền Thông
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Danh mục
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="./ao.html" class="footer-item__link">
+                                    Áo
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./aokhoac.html" class="footer-item__link">
+                                    Áo Khoác
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./quan.html" class="footer-item__link">
+                                    Quần
+                                </a>
+                            </li>                   
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Theo dõi chúng tôi
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="https://www.facebook.com/nguyenvuuu0211" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-facebook"></i>
+                                    Fakebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="https://www.instagram.com/nguyenvu_11/" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="https://github.com/NguyenVuuu" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-github"></i>
+                                    Github
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Vào cửa hàng trên ứng dụng
+                        </h3>
+                        <div class="footer__download">
+                            <img src="./img/qr.png" alt="" class="footer__download-qr">
+                            <div class="footer__download-app">
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/app-store.png" alt="" class="footer__download-app-img">
+                                </a>
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/gg-play.png" alt="" class="footer__download-app-img">
+                                </a>
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/galery.png" alt="" class="footer__download-app-img">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer> 
+        <!-- KẾT THÚC FOOTER -->
+    </div>
+</body>
+</html>

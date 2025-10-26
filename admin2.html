@@ -1,0 +1,1512 @@
+<!-- 
+
+                Nguyên Vũ
+                22002885
+                                                                                                    
+            ****             ****
+         *********        *********
+       *************    *************
+     *********************************
+   *************************************
+  ***************************************
+ *****************************************
+ *****************************************
+  ***************************************
+   *************************************
+    ***********************************
+      *******************************
+        ***************************
+          ***********************
+             *****************
+                ***********
+                   *****
+                     *
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang 2 - Admin</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./fonts/fontawesome-free-6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+    .header__cart-list {
+        position: absolute;
+        min-width: 32rem;
+        min-height: 2rem;
+        top: 168%;
+        right: 40%;
+        background-color: var(--white-color);
+        border-radius: 4px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transform-origin: calc(100% - 10px) top;
+        --growth-from: 0;
+        --growth-to: 1;
+        animation: growth ease-in 0.25s;
+        display: none;
+        cursor: default;
+        z-index: 1;
+    }
+    .shopping__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cart-item {
+        margin-bottom: 2rem;
+    }
+
+    .shoping__cart-img {
+        margin-top: 1.6rem;
+        height: 10rem;
+        object-fit: contain;
+        display: none;
+    }
+    .shoping__text {
+        font-size: 1.4rem;
+        padding-left: 2rem;
+        color: var(--text-color);
+        display: none;
+    }
+    .header__cart-purchased-heading {
+        font-size: 1.4rem;
+        color: #757575;
+        font-weight: 400;
+        margin-bottom: 1.2rem;
+        margin-left: 12px;
+    }
+    .header__cart-purchased-list {
+        padding-left: 0;
+        display: block;
+    }
+    .header__cart-purchased-item {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        padding-bottom: 0.8rem;
+    }
+    .header__cart-purchased-img {
+        height: 4rem;
+        object-fit: contain;
+        margin-left: 12px;
+        border: 1px solid #e8e8e8;
+    }
+    .header__cart-purchased-info {
+        width: 100%;
+    }
+    .header__cart-purchased-head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .header__cart-item-name {
+        font-size: 1.2rem;
+        margin-left: 1.2rem;
+        margin-bottom: 1.2rem;
+        line-height: 2rem;
+        max-height: 4rem;
+        overflow: hidden;
+        flex: 1;
+    }
+    .header__cart-item-wrap {
+        margin-right: 12px;
+    }
+    .header__cart-item-price {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+    }
+    .header__cart-item-multiply {
+        font-size: 1rem;
+        color: #757575;
+        margin: 0 0.4rem;
+    }
+    .header__cart-item-amount {
+        font-size: 1.2rem;
+        color: #757575;
+    }
+    .header__cart-purchased-body {
+        display: flex;
+        justify-content: space-between;
+    }
+    .header__cart-purchased-description {
+        margin-left: 1.2rem;
+        font-size: 1.2rem;
+    }
+    .header__cart-purchased-remove {
+        font-size: 1.3rem;
+        margin-right: 1.2rem;
+        margin-left: 12px;
+        color: var(--text-color);
+    }
+    .header__cart-notice {
+        position: absolute;
+        padding: 0.1rem 0.6rem;
+        bottom: 14px;
+        right: -5px;
+        background-color: var(--white-color);
+        border-radius: 1rem;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        border: 0.2rem solid #ee4d2d;
+    }
+    </style>
+</head>
+<body>
+    <!-- THẺ FULL CHỨA TẤT CẢ -->
+    <div class="full">
+
+        <!-- BẮT ĐẦU PHẦN HEADER -->
+        <header class="header">
+            <div class="grid">
+
+                <!-- HEADER MENU -->
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Kênh Người Bán</a>
+                        </li>
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Trở thành Người bán</a>
+                        </li>
+                        <li class="header__navbar-item header__navbar-item--border">
+                            <a href="#" class="header__navbar-item-link">Tải ứng dụng</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            Kết nối
+                            <a href="https://www.facebook.com/nguyenvuuu0211" class="header__navbar-icon">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/nguyenvu_11/" class="header__navbar-icon">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+    
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--noti">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-solid fa-bell"></i>
+                                Thông Báo
+                            </a>
+
+                            <!-- HOVER THÔNG BÁO -->
+                            <div class="header__noti">
+                                <header class="header__notify-header">
+                                    <h3>Thông báo mới nhận</h3>
+                                </header>
+                                <ul class="header__notify-list">
+                                    <li class="header__notify-item">
+                                        <a href="#" class="header__notify-link">
+                                            <img src="./img/Tanktop_Powerfit_Den_1.jpg" alt="" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">Áo Tanktop Nam Gym Powerfit</span>
+                                                <span class="header__notify-desc">Sử dụng chất liệu Poly và Spandex mang lại sản phẩm áo thoáng khí, thấm mồ hôi nhanh và khô thoáng vượt trội.</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__notify-item header__notify-item--view">
+                                        <a href="#" class="header__notify-link">
+                                            <img src="./img/ao-peace.jpg" alt="" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">Áo Thun Nam Peace</span>
+                                                <span class="header__notify-desc">Đây là những chiếc áo thun in hình trong dự án Clean Vietnam của Mango làm từ chất liệu Cotton kết hợp cùng chất liệu Polyester được tái chế từ các vỏ chai nhựa. </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__notify-item header__notify-item--view">
+                                        <a href="#" class="header__notify-link">
+                                            <img src="./img/crewz.jpg" alt="" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">Tee basic ss1 CREWZ áo thun tay lỡ unisex Local Brand - AO_THUN_DVR (V427)</span>
+                                                <span class="header__notify-desc">Áo thun nam oversize sử dụng chất vải cotton co giãn 4 chiều. Có đặc điểm mềm mịn, độ co giãn cao, khả năng thấm hút tốt và được dệt hoàn toàn từ sợi cây bông tự nhiên</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="header__notify-footer">
+                                    <a href="#" class="header__notify-footer-btn">Xem tất cả</a>
+                                </div>
+                            </div>
+                            
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-regular fa-circle-question"></i>
+                                Hỗ Trợ
+                            </a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link">
+                                <i class="fa-solid fa-earth-asia"></i>
+                                Tiếng Việt
+                                <i class="fa-solid fa-angle-down"></i>
+                            </a>
+                        </li>
+                        <!-- <li class="header__navbar-item">
+                            <a href="./login.html" class="header__navbar-item-link header__navbar-item--border header__navbar-item--weight">Đăng Ký</a>            
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="./login.html" class="header__navbar-item-link header__navbar-item--weight">Đăng Nhập</a>            
+                        </li> -->
+                        <li class="header__navbar-item header__navbar-user">
+                            <img src="./img/cat.jpg" alt="" class="header__navbar-user-img">
+                            <span class="header__navbar-user-name">Nguyên Vũ - Admin</span>
+
+                            <ul class="header__navbar-user-menu">
+                                <li class="header__navbar-user-item">
+                                    <a href="#">Tài khoản</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="#">Đơn mua</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="./sitemap.html">Sitemap</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="./doanhthu.html">Doanh Thu</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="./index.html">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- HEADER SEARCH -->
+                <div class="header-with-search">
+                    <div class="header__logo">
+                        <a href="#">
+                            <img src="./img/test.png" alt="" class="header__logo-img" style="width: 150px;">
+                        </a>
+                    </div>
+
+                    <!-- THANH TÌM KIẾM -->
+                    <div class="header__search">
+
+                        <!-- LỊCH SỬ TÌM KIẾM -->
+                        <div class="header__search-input-wrap">
+                            <input type="text" class="header__search-input" placeholder="Tìm kiếm ngay" >
+                            <div class="header__search-history">
+                                <h3 class="header__search-history-heading">
+                                    Lịch sử tìm kiếm
+                                </h3>
+                                <ul class="header__search-history-list">
+                                    <li class="header__search-history-item">
+                                        <a href="./tanktop.html">Tanktop</a>
+                                    </li>
+                                    <li class="header__search-history-item">
+                                        <a href="./hot.html">Hot</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- TRONG SHOP/NGOÀI SHOP -->
+                        <div class="header__search-select">
+                            <span class="header__search-select-label">Trong Shop</span>
+                            <i class="header__search-select-icon fa-solid fa-chevron-down"></i>
+                            <ul class="header__search-option">
+                                <li class="header__search-item header__search-item--active">
+                                    <span>Trong Shop</span>
+                                    <i class="fa-solid fa-check"></i>
+                                </li>
+                                <li class="header__search-item">
+                                    <span>Ngoài Shop</span>
+                                    <i class="fa-solid fa-check"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- ICON KÍNH LÚP -->
+                        <button class="header__search-btn">
+                            <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                    <!-- ICON GIỎ HÀNG -->
+                    <div class="header__cart">
+                        <div class="header__cart-wrap">
+
+                            <i class="header__cart-icon fa-solid fa-cart-shopping"></i>
+                            <!-- KHÔNG CÓ SẢN PHẨM:  header__cart-list--no-cart -->
+                            <!-- <div class="header__cart-list">
+                                <img src="./img/no-cart.png" alt="ERROR" class="header__cart--no-cart" data-ll-status="loaded">
+                                <span class="header__cart-list--no-cart-msg  ">
+                                    Chưa có sản phẩm      
+                                </span>
+                                <a href="./login.html" class="header__cart-list--no-cart-add ">
+                                    Thêm sản phẩm
+                                </a>
+                            </div> -->
+
+                            <!-- CÓ SẢN PHẨM -->
+                            <span class="header__cart-notice">3</span>
+                            <div class="header__cart-list">
+                                <div class="shopping__container">
+                                  <img class="shoping__cart-img cart-item" src="/shopee/assets/img/shopping-cart.png" alt="" />
+                                  <span class="shoping__text cart-item">Chưa có sản phẩm</span>
+                                </div>
+                                <!-- shoppingg cart purchased -->
+                                <div class="shopping__cart-purchased">
+                                  <h3 class="header__cart-purchased-heading">
+                                    Sản phẩm đã thêm
+                                  </h3>
+                                  <ul class="header__cart-purchased-list">
+                                    <li class="header__cart-purchased-item">
+                                      <img class="header__cart-purchased-img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="" />
+                                      <div class="header__cart-purchased-info">
+                                        <div class="header__cart-purchased-head">
+                                          <h5 class="header__cart-item-name">
+                                            Áo Tanktop Nam Gym Powerfit
+                                          </h5>
+                                          <div class="header__cart-item-wrap">
+                                            <span class="header__cart-item-price">239.000đ</span>
+                                            <span class="header__cart-item-multiply">x</span>
+                                            <span class="header__cart-item-amount">1</span>
+                                          </div>
+                                        </div>
+                                        <div class="header__cart-purchased-body">
+                                          <span class="header__cart-purchased-description">Mặt size 40mm kháng nước 30m</span>
+                                          <span class="header__cart-purchased-remove">Xóa</span>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="header__cart-purchased-item">
+                                      <img class="header__cart-purchased-img" src="./img/hoodie-typography.jpg" alt="" />
+                                      <div class="header__cart-purchased-info">
+                                        <div class="header__cart-purchased-head">
+                                          <h5 class="header__cart-item-name">
+                                            Áo Hoodie Oversize 84RISING TYPOGRAPHY
+                                          </h5>
+                                          <div class="header__cart-item-wrap">
+                                            <span class="header__cart-item-price">439.000đ</span>
+                                            <span class="header__cart-item-multiply">x</span>
+                                            <span class="header__cart-item-amount">1</span>
+                                          </div>
+                                        </div>
+                                        <div class="header__cart-purchased-body">
+                                          <span class="header__cart-purchased-description">Túi hộp phối nút cài, phong cách dễ thương siêu
+                                            cá
+                                            tính</span>
+                                          <span class="header__cart-purchased-remove">Xóa</span>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="header__cart-purchased-item">
+                                      <img class="header__cart-purchased-img" src="./img/kaki-excool.jpg" alt="" />
+                                      <div class="header__cart-purchased-info">
+                                        <div class="header__cart-purchased-head">
+                                          <h5 class="header__cart-item-name">Quần Dài Nam Kaki Excool Trượt Nước</h5>
+                                          <div class="header__cart-item-wrap">
+                                            <span class="header__cart-item-price">449.000đ</span>
+                                            <span class="header__cart-item-multiply">x</span>
+                                            <span class="header__cart-item-amount">2</span>
+                                          </div>
+                                        </div>
+                                        <div class="header__cart-purchased-body">
+                                          <span class="header__cart-purchased-description">
+                                            68 Phím Loại C Dành Cho Laptop</span>
+                                          <span class="header__cart-purchased-remove">Xóa</span>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                  <a href="" class="btn btn--primary btn-float-right">Xem giỏ hàng</a>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- KẾT THÚC HEADER -->
+
+        <!-- BẮT ĐẦU PHẦN CONTENT -->
+        <div class="container">
+            <div class="grid">
+                <div class="grid__row content">
+                    <!-- DANH MỤC SẢN PHẨM -->
+                    <div class="grid__column-2">
+                        <nav class="category">
+                            <h3 class="category__heading">
+                                <i class="fa-solid fa-list category__heading-icon"></i>
+                                Danh mục
+                            </h3>
+                            <ul class="category-list">
+                                <li class="category-item category-item--active">
+                                    <a href="./index.html" class="category-item__link category-item--active">
+                                        Sản phẩm
+                                    </a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="./ao.html" class="category-item__link">
+                                        Áo
+                                    </a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="./aokhoac.html" class="category-item__link">
+                                       Áo Khoác
+                                    </a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="./quan.html" class="category-item__link">
+                                        Quần
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>                   
+                    </div>
+    
+                    <!-- SẢN PHẨM -->
+                    <div class="grid__column-10">
+                        <div class="home-filter">
+                            <span class="home-filter__label">
+                                Sắp xếp theo
+                            </span>
+                            <button class="home-filter__btn btn">
+                                <a href="#" class="home-filter__btn-link">Phổ Biến</a>
+                            </button>
+                            <button class="home-filter__btn btn btn--primary ">Mới Nhất</button>
+                            <button class="home-filter__btn btn">
+                                <a href="./hot.html" class="home-filter__btn-link">Bán Chạy</a>
+                            </button>
+
+                            <div class="select-input">
+                                <span class="select-input__label">Giá</span>
+                                <i class="select-input__icon fa-solid fa-angle-down"></i>
+                                <ul class="select-input__list">
+                                    <li class="select-input__item">
+                                        <a href="#" class="select-input__link">Giá: Thấp đến cao</a>
+                                    </li>
+                                    <li class="select-input__item">
+                                        <a href="#" class="select-input__link">Giá: Cao đến thấp</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="home-filter__page">
+                                <span class="home-filter__page-num">
+                                    2<span class="home-filter__page-current">/3
+                                    </span>
+                                </span>
+                                <div class="home-filter__page-control">
+                                    <a href="./admin1.html" class="home-filter__page-btn">
+                                        <i class="home-filter__page-icon fa-solid fa-angle-left"></i>
+                                    </a>
+                                    <a href="./admin3.html" class="home-filter__page-btn">
+                                        <i class="home-filter__page-icon fa-solid fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="home-product">
+                            <!-- HÀNG 1 -->
+                            <div class="grid__row">
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/promax-s1.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Áo Thun Nam Thể Thao Promax-S1
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">179.000đ</span>
+                                            <span class="home-product-item__price-new">109.000đ</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class=" fa-solid fa-star"></i>
+                                                <i class=" fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                10.046
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Coolmate
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                Việt Nam
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                39%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                                
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <img class="home-product-item__img" src="./img/short-power.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Quần Shorts Nam Gym 7" Power
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">339.000₫</span>
+                                            <span class="home-product-item__price-new">219.000₫</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                747 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Coolmate
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                Việt Nam
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                35%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/raglan.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Áo Thun Raglan SAIGONESE Cotton Phối Line Unisex 4 Màu
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">209.000₫</span>
+                                            <span class="home-product-item__price-new">159.000₫</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                28.5k đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__origin-name">
+                                                TP. Hồ Chí Minh
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                24%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/kaki-basic.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Áo sơ mi nam Basic chất kaki cao cấp cực đẹp
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">250.000₫</span>
+                                            <span class="home-product-item__price-new">99.000₫</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                19.6k đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__origin-name">
+                                                Hà Nội
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                60%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/simpson.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Áo Thun Phối Thể Thao Simpson Local Brand Streetwear Form Oversize - TS10
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">300.000đ</span>
+                                            <span class="home-product-item__price-new">169.000đ</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                10.000 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__origin-name">
+                                                TP. Hồ Chí Minh
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                44%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+
+                            <!-- HÀNG 2 -->
+                            <div class="grid__row">
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/crewz.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Tee basic ss1 CREWZ áo thun tay lỡ unisex Local Brand - AO_THUN_DVR (V427)
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">159.000đ</span>
+                                            <span class="home-product-item__price-new">59.000đ</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                123,6k đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Vender_Store
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                TP.Hồ Chí Minh
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                100k
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                                
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/rkican.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Đồ bộ nam chất thun lạnh in Ice Ice đường ray cực đẹp, kiểu dáng slim fit đơn giản mặc đẹp mọi lứa tuồi DB40
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">130.000đ</span>
+                                            <span class="home-product-item__price-new">69.000đ</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                50 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__origin-name">
+                                                TP. Hồ Chí Minh
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                46%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/pants-ut.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Quần Dài Nam UT Pants
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">690.000đ</span>
+                                            <span class="home-product-item__price-new">599.000đ</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                390 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Coolmate
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                Việt Nam
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                13%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/daily-wear.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Áo Khoác Nam có mũ Daily Wear
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">499.000đ</span>
+                                            <span class="home-product-item__price-new">399.000đ</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                4.966 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Coolmate
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                Việt Nam
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                20%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/polo-active.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Combo 03 Áo Polo thể thao nam Active V1
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">747.000đ</span>
+                                            <span class="home-product-item__price-new">599.000đ</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                605 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Coolmate
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                Việt Nam
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                20%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+
+                            <!-- HÀNG 3 -->
+                            <div class="grid__row">
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/essentials.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Áo Sơ Mi Dài Tay Essentials Cotton
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-new">399.000₫</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>                                            
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Coolmate
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                Việt Nam
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                    </a>                                    
+                                </div>
+                                
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/sancool.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Áo Thun Local Brand Sancool Unisex Premium Cotton Happy Cats Ss.1 - SC018
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">280.000₫</span>
+                                            <span class="home-product-item__price-new">189.000₫</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Sancool
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                TP. Hồ Chí Minh
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                33%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/slim-fit.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Quần Jeans Nam Basics dáng Slim fit
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">499.000₫</span>
+                                            <span class="home-product-item__price-new">449.000₫</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                722 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Coolmate
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                Việt Nam
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                10%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/daily-pant.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Quần dài nam Daily Pants
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">299.000đ</span>
+                                            <span class="home-product-item__price-new">259.000đ</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                45.017 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">
+                                                Coolmate
+                                            </span>
+                                            <span class="home-product-item__origin-name">
+                                                Việt Nam
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-label">
+                                                GIẢM
+                                            </span>
+                                            <span class="home-product-item__sale-off-percent">
+                                                13%
+                                            </span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="grid__column-2-4 ">
+                                    <!-- 1 SẢN PHẨM -->
+                                    <a class="home-product-item" href="#">
+                                        <!-- <div class="home-product-item__img" style="background-image: url(https://down-vn.img.susercontent.com/file/vn-11134201-23030-8u6xfyyacrov4f);"></div> -->
+                                        <!-- <div class="home-product-item__pic">
+                                            <img class="home-product-item__img" src="./img/Tanktop_Powerfit_Den_1.jpg" alt="">
+                                        </div> -->
+                                        <img class="home-product-item__img" src="./img/jurasic.jpg" alt="">
+                                        <h4 class="home-product-item__name">
+                                            Áo Thun 84RISING Jurassic Warriors - Basketball Collection
+                                        </h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-new">299.000₫</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like">
+                                                <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">
+                                                21 đã bán
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__origin-name">
+                                                Hà Nội
+                                            </span>
+                                        </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>yêu thích</span>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CHUYỂN TRANG -->
+                        <ul class="pagination home-product__pagination">
+                            <li class="pagination-item">
+                                <a href="./admin1.html" class="pagination-item__link">
+                                    <i class="pagination-item__icon fa-solid fa-angle-left"></i>
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="./admin1.html" class="pagination-item__link">
+                                    1
+                                </a>
+                            </li>
+                            <li class="pagination-item pagination-item--active">
+                                <a href="#" class="pagination-item__link">
+                                    2
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="./admin3.html" class="pagination-item__link">
+                                    3
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="./admin3.html" class="pagination-item__link">
+                                    <i class="pagination-item__icon fa-solid fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- KẾT THÚC CONTENT -->
+        
+        <!-- BẮT ĐẦU PHẦN FOOTER -->
+        <footer class="footer">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Chăm sóc khách hàng
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trung tâm trợ giúp
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Mango Shop Mall
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng Dẫn Mua Hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng Dẫn Bán Hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Mango Xu
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Vận Chuyển
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trả Hàng & Hoàn Tiền
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chăm Sóc Khách Hàng
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Về Mango
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="./gioithieu.html" class="footer-item__link">
+                                    Giới Thiệu Về Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./cauchuyen.html" class="footer-item__link">
+                                    Câu chuyện của Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Tuyển Dụng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Điều Khoản Mango
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính Sách Bảo Mật
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính Hãng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Kênh Người Bán
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Flash Sales
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Liên Hệ Với Truyền Thông
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Danh mục
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="./ao.html" class="footer-item__link">
+                                    Áo
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./aokhoac.html" class="footer-item__link">
+                                    Áo Khoác
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="./quan.html" class="footer-item__link">
+                                    Quần
+                                </a>
+                            </li>                   
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Theo dõi chúng tôi
+                        </h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="https://www.facebook.com/nguyenvuuu0211" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-facebook"></i>
+                                    Fakebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="https://www.instagram.com/nguyenvu_11/" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="https://github.com/NguyenVuuu" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-github"></i>
+                                    Github
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2-4">
+                        <h3 class="footer__heading">
+                            Vào cửa hàng trên ứng dụng
+                        </h3>
+                        <div class="footer__download">
+                            <img src="./img/qr.png" alt="" class="footer__download-qr">
+                            <div class="footer__download-app">
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/app-store.png" alt="" class="footer__download-app-img">
+                                </a>
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/gg-play.png" alt="" class="footer__download-app-img">
+                                </a>
+                                <a href="#" class="footer__download-app-link">
+                                    <img src="./img/galery.png" alt="" class="footer__download-app-img">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer> 
+        <!-- KẾT THÚC FOOTER -->
+    </div>
+</body>
+</html>

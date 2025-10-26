@@ -1,0 +1,195 @@
+<!-- 
+
+                Nguyên Vũ
+                22002885
+                                                                                                    
+            ****             ****
+         *********        *********
+       *************    *************
+     *********************************
+   *************************************
+  ***************************************
+ *****************************************
+ *****************************************
+  ***************************************
+   *************************************
+    ***********************************
+      *******************************
+        ***************************
+          ***********************
+             *****************
+                ***********
+                   *****
+                     *
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="./js/main.js"></script>
+    <link rel="stylesheet" href="./fonts/fontawesome-free-6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+                <!-- FORM ĐĂNG NHẬP -->
+    <div class="container" id="container">
+        <!-- ĐĂNG KÝ  -->
+        <div class="form-container sign-up" >
+            <form id="sign-up-form" prevwentdefault onsubmit="return validateForm()" >
+                <h1>Tạo Tài Khoản</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <span>Đăng ký bằng email</span>
+                <div>
+                    <input type="text" class="container_input" id="name" name="name" placeholder="Họ và tên"/> <br>
+                    <div id="nameError" class="error-message" style="color: red; font-style: italic;"></div>
+                </div>
+                <div>
+                    <input type="tel" class="container_input" id="phone" name="phone"  placeholder="Số điện thoại"/>
+                    <div id="phoneError" class="error-message" style="color: red; font-style: italic;"></div>
+                </div>
+                <div>
+                    <input type="email"  class="container_input"id="email" name="email"  placeholder="Email"/>
+                    <div id="emailError" class="error-message" style="color: red; font-style: italic;"></div>
+                </div>
+                <div>
+                    <input type="password" class="container_input" id="password" name="password"  placeholder="Password"/>
+                    <div id="passwordError" class="error-message" style="color: red; font-style: italic;"></div>
+                </div>
+                <!-- <input type="text" class="container_input" id="name" name="name" placeholder="Họ Và Tên">
+                <div id="nameError" class="error-message" style="color: red; font-style: italic;"></div>
+                <input type="email" class="container_input" placeholder="Email">
+                <input type="tel" class="container_input" placeholder="Email">
+                <input type="password" class="container_input" placeholder="Password"> -->
+                <button>Đăng Ký</button>
+                <div class="social-icons">
+                    <a href="./index.html" class="icon"><i class="fa-solid fa-house"></i></a>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- ĐĂNG NHẬP -->
+        <div class="form-container sign-in">
+            <form onsubmit="return login()">
+                <h1>Đăng Nhập</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="./admin1.html" class="icon"><i class="fa-solid fa-user-tie"></i></a>
+                </div>
+                <span>Đăng nhập bằng email</span>
+                <form id="sign-in-form" onsubmit="return login()">      
+                    <input type="email" class="container_input" id="email2" placeholder="Email"/>
+                    <input type="password" class="container_input" id="password2" placeholder="Password"/><br>
+                    <p class="forgot-password">Quên mật khẩu</p>
+                    <button>Đăng Nhập</button>
+                    <div class="social-icons">
+                        <a href="./index.html" class="icon"><i class="fa-solid fa-house"></i></a>
+                    </div>
+                </form>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Đăng nhập để sử dụng các tính năng của <span class="text-danger " style="font-weight: 700;">Mango</span> >< </p>
+                    <button class="hidden" id="login">Đăng Nhập</button>
+                    
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Đăng ký với thông tin cá nhân của bạn để đồng hành cùng <span class="text-danger " style="font-weight: 700;">Mango</span></p>
+                    <button class="hidden" id="register">Đăng Ký</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const container = document.getElementById('container');
+        const registerBtn = document.getElementById('register');
+        const loginBtn = document.getElementById('login');
+        registerBtn.addEventListener('click', () =>{
+            container.classList.add('active');
+        });
+        loginBtn.addEventListener('click', () => {
+            container.classList.remove('active')
+        });
+
+        var overlay = document.getElementById("overlay");
+        var openSignUpButton = document.getElementById("slide-left-button");
+        var openSignInButton = document.getElementById("slide-right-button");
+        var leftText = document.getElementById("sign-in");
+        var rightText = document.getElementById("sign-up");
+
+        var accountForm = document.getElementById("sign-in-info")
+        var signinForm = document.getElementById("sign-up-info");
+
+        // openSignUp = () =>{ 
+
+        // leftText.classList.remove("overlay-text-left-animation-out");
+        // overlay.classList.remove("open-sign-in");
+        // rightText.classList.remove("overlay-text-right-animation");
+
+        // accountForm.className += " form-left-slide-out"
+        // rightText.className += " overlay-text-right-animation-out";
+        // overlay.className += " open-sign-up";
+        // leftText.className += " overlay-text-left-animation";
+
+        // setTimeout(function(){
+        //     accountForm.classList.remove("form-left-slide-in");
+        //     accountForm.style.display = "none";
+        //     accountForm.classList.remove("form-left-slide-out");
+        // }, 700);
+
+        // setTimeout(function(){
+        //     signinForm.style.display = "flex";
+        //     signinForm.classList += " form-right-slide-in";
+        // }, 200);
+        // }
+
+        // openSignIn = () =>{
+        // leftText.classList.remove("overlay-text-left-animation");
+        // overlay.classList.remove("open-sign-up");
+        // rightText.classList.remove("overlay-text-right-animation-out");
+
+        // signinForm.classList += " form-right-slide-out";
+        // leftText.className += " overlay-text-left-animation-out";
+        // overlay.className += " open-sign-in";
+        // rightText.className += " overlay-text-right-animation";
+
+        // setTimeout(function(){
+        //     signinForm.classList.remove("form-right-slide-in")
+        //     signinForm.style.display = "none";
+        //     signinForm.classList.remove("form-right-slide-out")
+        // },700);
+
+        // setTimeout(function(){
+        //     accountForm.style.display = "flex";
+        //     accountForm.classList += " form-left-slide-in";
+        // },200);
+        // }
+
+        openSignUpButton.addEventListener("click", openSignUp, false);
+        openSignInButton.addEventListener("click", openSignIn, false);
+
+        
+    </script>
+</body>
+</html>
